@@ -54,6 +54,11 @@ public class ForHiddenProject extends ForProject {
     }
 
     @Override
+    public ForChange indexedChange(ChangeData cd, ChangeNotes notes) {
+      return forChange;
+    }
+
+    @Override
     public void check(RefPermission perm) throws AuthException, PermissionBackendException {
       throwDenied();
     }
