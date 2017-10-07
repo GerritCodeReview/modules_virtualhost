@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47aa51eb_bc815ec5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-10-07T05:32:49Z",
+      "side": 1,
+      "message": "Be more specific:\n\nAdapt to updated PermissionBackend#ForProject interface",
+      "revId": "985df353b4f3be425d06542141e71da2df6b878f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f45e45_aca76978",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/ForHiddenProject.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-10-07T05:32:49Z",
+      "side": 1,
+      "message": "Missing @Override",
+      "revId": "985df353b4f3be425d06542141e71da2df6b878f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
