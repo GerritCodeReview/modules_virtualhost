@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b1dcdec2_b036850f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-10-07T10:59:24Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "47aa51eb_bc815ec5",
+      "revId": "985df353b4f3be425d06542141e71da2df6b878f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84f45e45_aca76978",
         "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/ForHiddenProject.java",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-07T05:32:49Z",
       "side": 1,
       "message": "Missing @Override",
+      "revId": "985df353b4f3be425d06542141e71da2df6b878f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "228653c2_d6624151",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/ForHiddenProject.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-10-07T10:59:24Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "84f45e45_aca76978",
       "revId": "985df353b4f3be425d06542141e71da2df6b878f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
