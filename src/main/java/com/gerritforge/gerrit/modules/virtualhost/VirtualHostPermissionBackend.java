@@ -14,21 +14,66 @@
 
 package com.gerritforge.gerrit.modules.virtualhost;
 
+import static java.util.Objects.requireNonNull;
+
 import com.gerritforge.gerrit.modules.virtualhost.WithVirtualHostUser.Factory;
+import com.google.common.flogger.FluentLogger;
+import com.google.gerrit.entities.Account;
+import com.google.gerrit.entities.Account.Id;
 import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.IdentifiedUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
+import java.util.Optional;
 
 public class VirtualHostPermissionBackend extends PermissionBackend {
-  private Factory virtualDomainUserFactory;
+  private static final FluentLogger logger = FluentLogger.forEnclosingClass();
+
+  private final Provider<CurrentUser> currentUser;
+  private final IdentifiedUser.GenericFactory identifiedUserFactory;
+  private final Factory virtualDomainUserFactory;
 
   @Inject
-  VirtualHostPermissionBackend(WithVirtualHostUser.Factory virtualDomainUserFactory) {
+  VirtualHostPermissionBackend(
+      Provider<CurrentUser> currentUser,
+      IdentifiedUser.GenericFactory identifiedUserFactory,
+      WithVirtualHostUser.Factory virtualDomainUserFactory) {
+    this.currentUser = currentUser;
+    this.identifiedUserFactory = identifiedUserFactory;
     this.virtualDomainUserFactory = virtualDomainUserFactory;
   }
 
   @Override
   public WithUser user(CurrentUser user) {
     return virtualDomainUserFactory.get(user);
+  }
+
+  @Override
+  public WithUser currentUser() {
+    return virtualDomainUserFactory.get(currentUser.get());
+  }
+
+  @Override
+  public WithUser absentUser(Id id) {
+    Optional<Account.Id> user = getAccountIdOfIdentifiedUser();
+    if (user.isPresent() && id.equals(user.get())) {
+      // What looked liked an absent user is actually the current caller. Use the per-request
+      // singleton IdentifiedUser instead of constructing a new object to leverage caching in member
+      // variables of IdentifiedUser.
+      return virtualDomainUserFactory.get(currentUser.get().asIdentifiedUser());
+    }
+    return virtualDomainUserFactory.get(identifiedUserFactory.create(requireNonNull(id, "user")));
+  }
+
+  private Optional<Account.Id> getAccountIdOfIdentifiedUser() {
+    try {
+      return currentUser.get().isIdentifiedUser()
+          ? Optional.of(currentUser.get().getAccountId())
+          : Optional.empty();
+    } catch (Exception e) {
+      logger.atFine().withCause(e).log("Unable to get current user");
+      return Optional.empty();
+    }
   }
 }
