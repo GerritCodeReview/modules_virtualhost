@@ -15,7 +15,6 @@
 package com.gerritforge.gerrit.modules.virtualhost;
 
 import java.io.IOException;
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -27,8 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 public class VirtualHostFilter implements Filter {
 
   @Override
-  public void init(FilterConfig filterConfig) throws ServletException {
-  }
+  public void init(FilterConfig filterConfig) throws ServletException {}
 
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -38,6 +36,5 @@ public class VirtualHostFilter implements Filter {
   }
 
   @Override
-  public void destroy() {
-  }
+  public void destroy() {}
 }

@@ -14,10 +14,6 @@
 
 package com.gerritforge.gerrit.modules.virtualhost;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.notedb.ChangeNotes;
@@ -29,6 +25,9 @@ import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.permissions.ProjectPermission;
 import com.google.gerrit.server.permissions.RefPermission;
 import com.google.gerrit.server.query.change.ChangeData;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
 
 public class ForHiddenProject extends ForProject {
   private final ForRef forRef = new HiddenForRef();
@@ -64,7 +63,8 @@ public class ForHiddenProject extends ForProject {
     }
 
     @Override
-    public Set<RefPermission> test(Collection<RefPermission> permSet) throws PermissionBackendException {
+    public Set<RefPermission> test(Collection<RefPermission> permSet)
+        throws PermissionBackendException {
       return Collections.emptySet();
     }
   }
@@ -82,12 +82,14 @@ public class ForHiddenProject extends ForProject {
     }
 
     @Override
-    public void check(ChangePermissionOrLabel perm) throws AuthException, PermissionBackendException {
+    public void check(ChangePermissionOrLabel perm)
+        throws AuthException, PermissionBackendException {
       throwDenied();
     }
 
     @Override
-    public <T extends ChangePermissionOrLabel> Set<T> test(Collection<T> permSet) throws PermissionBackendException {
+    public <T extends ChangePermissionOrLabel> Set<T> test(Collection<T> permSet)
+        throws PermissionBackendException {
       return Collections.emptySet();
     }
   }
@@ -108,12 +110,12 @@ public class ForHiddenProject extends ForProject {
   }
 
   @Override
-  public Set<ProjectPermission> test(Collection<ProjectPermission> permSet) throws PermissionBackendException {
+  public Set<ProjectPermission> test(Collection<ProjectPermission> permSet)
+      throws PermissionBackendException {
     return Collections.emptySet();
   }
 
   private void throwDenied() throws AuthException {
     throw new AuthException("Resource does not exist");
   }
-
 }

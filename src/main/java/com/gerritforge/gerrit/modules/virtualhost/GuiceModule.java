@@ -23,8 +23,10 @@ public class GuiceModule extends AbstractModule {
 
   @Override
   protected void configure() {
-    install(new FactoryModuleBuilder().implement(WithVirtualHostUser.class, WithVirtualHostUser.class)
-        .build(WithVirtualHostUser.Factory.class));
+    install(
+        new FactoryModuleBuilder()
+            .implement(WithVirtualHostUser.class, WithVirtualHostUser.class)
+            .build(WithVirtualHostUser.Factory.class));
 
     bind(PermissionBackend.class).to(VirtualHostPermissionBackend.class).in(Scopes.SINGLETON);
   }

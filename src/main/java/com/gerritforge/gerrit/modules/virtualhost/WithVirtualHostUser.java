@@ -14,20 +14,19 @@
 
 package com.gerritforge.gerrit.modules.virtualhost;
 
-import java.util.Collection;
-import java.util.Set;
-
 import com.google.gerrit.extensions.api.access.GlobalOrPluginPermission;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.reviewdb.client.Project.NameKey;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend.ForProject;
 import com.google.gerrit.server.permissions.PermissionBackend.WithUser;
-import com.google.inject.Inject;
-import com.google.inject.assistedinject.Assisted;
 import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.DefaultPermissionBackend;
 import com.google.gerrit.server.project.RefPatternMatcher;
+import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
+import java.util.Collection;
+import java.util.Set;
 
 public class WithVirtualHostUser extends WithUser {
   private final CurrentUser user;
@@ -40,7 +39,9 @@ public class WithVirtualHostUser extends WithUser {
   }
 
   @Inject
-  WithVirtualHostUser(VirtualHostConfig config, DefaultPermissionBackend defaultBackend,
+  WithVirtualHostUser(
+      VirtualHostConfig config,
+      DefaultPermissionBackend defaultBackend,
       @Assisted CurrentUser user) {
     this.config = config;
     this.defaultPermissionBackend = defaultBackend;
@@ -50,8 +51,10 @@ public class WithVirtualHostUser extends WithUser {
 
   @Override
   public ForProject project(NameKey project) {
-    if (!config.isEnabled() || matches(project.get(),
-        CurrentServerName.get().map(config::getProjects).orElse(config.defaultProjects))) {
+    if (!config.isEnabled()
+        || matches(
+            project.get(),
+            CurrentServerName.get().map(config::getProjects).orElse(config.defaultProjects))) {
       return wrapped.project(project);
     }
 
@@ -68,12 +71,14 @@ public class WithVirtualHostUser extends WithUser {
   }
 
   @Override
-  public void check(GlobalOrPluginPermission perm) throws AuthException, PermissionBackendException {
+  public void check(GlobalOrPluginPermission perm)
+      throws AuthException, PermissionBackendException {
     wrapped.check(perm);
   }
 
   @Override
-  public <T extends GlobalOrPluginPermission> Set<T> test(Collection<T> permSet) throws PermissionBackendException {
+  public <T extends GlobalOrPluginPermission> Set<T> test(Collection<T> permSet)
+      throws PermissionBackendException {
     return wrapped.test(permSet);
   }
 }

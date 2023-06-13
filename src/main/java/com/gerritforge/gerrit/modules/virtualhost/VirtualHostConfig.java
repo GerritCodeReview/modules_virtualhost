@@ -14,18 +14,16 @@
 
 package com.gerritforge.gerrit.modules.virtualhost;
 
+import com.google.gerrit.server.config.SitePaths;
+import com.google.inject.Inject;
 import java.io.File;
 import java.io.IOException;
-
 import org.eclipse.jgit.errors.ConfigInvalidException;
 import org.eclipse.jgit.lib.Config;
 import org.eclipse.jgit.storage.file.FileBasedConfig;
 import org.eclipse.jgit.util.FS;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.gerrit.server.config.SitePaths;
-import com.google.inject.Inject;
 
 public class VirtualHostConfig {
   private static final Logger log = LoggerFactory.getLogger(VirtualHostConfig.class);
