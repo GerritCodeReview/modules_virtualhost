@@ -15,6 +15,7 @@
 package com.gerritforge.gerrit.modules.virtualhost;
 
 import com.gerritforge.gerrit.modules.virtualhost.WithVirtualHostUser.Factory;
+import com.google.gerrit.entities.Account.Id;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.inject.Inject;
@@ -30,5 +31,15 @@ public class VirtualHostPermissionBackend extends PermissionBackend {
   @Override
   public WithUser user(CurrentUser user) {
     return virtualDomainUserFactory.get(user);
+  }
+
+  @Override
+  public WithUser absentUser(Id id) {
+    return null;
+  }
+
+  @Override
+  public WithUser currentUser() {
+    return null;
   }
 }

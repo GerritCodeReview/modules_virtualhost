@@ -14,6 +14,8 @@
 
 package com.gerritforge.gerrit.modules.virtualhost;
 
+import com.google.gerrit.extensions.api.access.CoreOrPluginProjectPermission;
+import com.google.gerrit.extensions.conditions.BooleanCondition;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.notedb.ChangeNotes;
@@ -21,13 +23,15 @@ import com.google.gerrit.server.permissions.ChangePermissionOrLabel;
 import com.google.gerrit.server.permissions.PermissionBackend.ForChange;
 import com.google.gerrit.server.permissions.PermissionBackend.ForProject;
 import com.google.gerrit.server.permissions.PermissionBackend.ForRef;
+import com.google.gerrit.server.permissions.PermissionBackend.RefFilterOptions;
 import com.google.gerrit.server.permissions.PermissionBackendException;
-import com.google.gerrit.server.permissions.ProjectPermission;
 import com.google.gerrit.server.permissions.RefPermission;
 import com.google.gerrit.server.query.change.ChangeData;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
+import org.eclipse.jgit.lib.Ref;
+import org.eclipse.jgit.lib.Repository;
 
 public class ForHiddenProject extends ForProject {
   private final ForRef forRef = new HiddenForRef();
@@ -37,8 +41,7 @@ public class ForHiddenProject extends ForProject {
 
   public class HiddenForRef extends ForRef {
 
-    @Override
-    public ForRef user(CurrentUser user) {
+    public ForRef user(@SuppressWarnings("unused") CurrentUser user) {
       return this;
     }
 
@@ -53,11 +56,6 @@ public class ForHiddenProject extends ForProject {
     }
 
     @Override
-    public ForChange indexedChange(ChangeData cd, ChangeNotes notes) {
-      return forChange;
-    }
-
-    @Override
     public void check(RefPermission perm) throws AuthException, PermissionBackendException {
       throwDenied();
     }
@@ -67,18 +65,22 @@ public class ForHiddenProject extends ForProject {
         throws PermissionBackendException {
       return Collections.emptySet();
     }
-  }
-
-  public class HiddenForChange extends ForChange {
 
     @Override
-    public CurrentUser user() {
+    public String resourcePath() {
       return null;
     }
 
     @Override
-    public ForChange user(CurrentUser user) {
-      return this;
+    public BooleanCondition testCond(RefPermission perm) {
+      return null;
+    }
+  }
+
+  public class HiddenForChange extends ForChange {
+    @Override
+    public String resourcePath() {
+      return null;
     }
 
     @Override
@@ -92,11 +94,11 @@ public class ForHiddenProject extends ForProject {
         throws PermissionBackendException {
       return Collections.emptySet();
     }
-  }
 
-  @Override
-  public ForProject user(CurrentUser user) {
-    return this;
+    @Override
+    public BooleanCondition testCond(ChangePermissionOrLabel perm) {
+      return null;
+    }
   }
 
   @Override
@@ -105,14 +107,31 @@ public class ForHiddenProject extends ForProject {
   }
 
   @Override
-  public void check(ProjectPermission perm) throws AuthException, PermissionBackendException {
+  public void check(CoreOrPluginProjectPermission perm)
+      throws AuthException, PermissionBackendException {
     throwDenied();
   }
 
   @Override
-  public Set<ProjectPermission> test(Collection<ProjectPermission> permSet)
+  public String resourcePath() {
+    return null;
+  }
+
+  @Override
+  public <T extends CoreOrPluginProjectPermission> Set<T> test(Collection<T> permSet)
       throws PermissionBackendException {
     return Collections.emptySet();
+  }
+
+  @Override
+  public BooleanCondition testCond(CoreOrPluginProjectPermission perm) {
+    return null;
+  }
+
+  @Override
+  public Collection<Ref> filter(Collection<Ref> refs, Repository repo, RefFilterOptions opts)
+      throws PermissionBackendException {
+    return null;
   }
 
   private void throwDenied() throws AuthException {
