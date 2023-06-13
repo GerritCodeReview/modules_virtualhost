@@ -14,14 +14,15 @@
 
 package com.gerritforge.gerrit.modules.virtualhost;
 
+import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.api.access.GlobalOrPluginPermission;
+import com.google.gerrit.extensions.conditions.BooleanCondition;
 import com.google.gerrit.extensions.restapi.AuthException;
-import com.google.gerrit.reviewdb.client.Project.NameKey;
 import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.permissions.DefaultPermissionBackend;
 import com.google.gerrit.server.permissions.PermissionBackend.ForProject;
 import com.google.gerrit.server.permissions.PermissionBackend.WithUser;
 import com.google.gerrit.server.permissions.PermissionBackendException;
-import com.google.gerrit.server.project.DefaultPermissionBackend;
 import com.google.gerrit.server.project.RefPatternMatcher;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
@@ -50,7 +51,7 @@ public class WithVirtualHostUser extends WithUser {
   }
 
   @Override
-  public ForProject project(NameKey project) {
+  public ForProject project(Project.NameKey project) {
     if (!config.isEnabled()
         || matches(
             project.get(),
@@ -80,5 +81,10 @@ public class WithVirtualHostUser extends WithUser {
   public <T extends GlobalOrPluginPermission> Set<T> test(Collection<T> permSet)
       throws PermissionBackendException {
     return wrapped.test(permSet);
+  }
+
+  @Override
+  public BooleanCondition testCond(GlobalOrPluginPermission perm) {
+    return wrapped.testCond(perm);
   }
 }
