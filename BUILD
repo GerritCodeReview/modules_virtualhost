@@ -1,5 +1,5 @@
 load("//tools/bzl:junit.bzl", "junit_tests")
-load("//tools/bzl:plugin.bzl", "gerrit_plugin")
+load("//tools/bzl:plugin.bzl", "PLUGIN_DEPS", "PLUGIN_TEST_DEPS", "gerrit_plugin")
 
 gerrit_plugin(
     name = "virtualhost",
@@ -15,9 +15,7 @@ junit_tests(
     name = "tests",
     srcs = glob(["src/test/java/**/*Test.java"]),
     visibility = ["//visibility:public"],
-    deps = [
+    deps = PLUGIN_TEST_DEPS + PLUGIN_DEPS + [
         ":virtualhost__plugin",
-        "//gerrit-acceptance-framework:lib",
-        "//gerrit-plugin-api:lib",
     ],
 )
