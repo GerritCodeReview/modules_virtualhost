@@ -6,7 +6,7 @@ gerrit_plugin(
     srcs = glob(["src/main/java/**/*.java"]),
     manifest_entries = [
         "Implementation-Title: Gerrit Virtual Host lib module",
-        "Implementation-URL: https://github.com/gerritforge/gerrit-virtualhost",
+        "Implementation-URL: https://gerrit.googlesource.com/modules/virtualhost",
     ],
     resources = glob(["src/main/resources/**/*"]),
 )
@@ -16,7 +16,7 @@ junit_tests(
     srcs = glob(["src/test/java/**/*Test.java"]),
     visibility = ["//visibility:public"],
     deps = [
-        ":project-vhost__plugin",
+        ":virtualhost__plugin",
         "//gerrit-acceptance-framework:lib",
         "//gerrit-plugin-api:lib",
     ],
