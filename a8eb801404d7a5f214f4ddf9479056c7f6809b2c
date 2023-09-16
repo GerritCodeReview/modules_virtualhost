@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d375d1_f5531529",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VritualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-16T13:21:13Z",
+      "side": 1,
+      "message": "Missing file header",
+      "revId": "a8eb801404d7a5f214f4ddf9479056c7f6809b2c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
