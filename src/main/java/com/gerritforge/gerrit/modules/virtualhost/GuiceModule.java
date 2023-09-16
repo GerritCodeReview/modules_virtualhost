@@ -1,4 +1,4 @@
-// Copyright (C) 2017 GerritForge Ltd.
+// Copyright (C) 2023 GerritForge Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
 
 package com.gerritforge.gerrit.modules.virtualhost;
 
+import com.google.gerrit.httpd.HttpCanonicalWebUrlProvider;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.inject.AbstractModule;
 import com.google.inject.Scopes;
@@ -29,5 +30,6 @@ public class GuiceModule extends AbstractModule {
             .build(WithVirtualHostUser.Factory.class));
 
     bind(PermissionBackend.class).to(VirtualHostPermissionBackend.class).in(Scopes.SINGLETON);
+    bind(HttpCanonicalWebUrlProvider.class).to(VritualHostHttpCanonicalWebUrlProvider.class);
   }
 }
