@@ -16,6 +16,23 @@
       "message": "please, can you add a test. apart from that it looks promising.",
       "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39eeb581_ea9fb078",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-17T09:16:19Z",
+      "side": 1,
+      "message": "should virtual host name should be taken from the Header X-Forwarded-Host?",
+      "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
