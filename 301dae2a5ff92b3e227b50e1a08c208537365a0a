@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5849999b_a56ea091",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-18T09:54:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "451d3df9_3dcefc64",
+      "range": {
+        "startLine": 14,
+        "startChar": 30,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fdedc79_827d43d6",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-18T09:31:48Z",
       "side": 1,
       "message": "Typo: `virtual`.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad867be3_5df33a03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-18T09:54:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fdedc79_827d43d6",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -117,6 +165,47 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "788816b5_9eb25021",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-18T09:54:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c913d64_beb67f82",
+      "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfaaee70_a0c50b4e",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VritualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-18T09:54:53Z",
+      "side": 1,
+      "message": "IMO, we should always append a trailing slash here, as the value in `CurrentServerName` will always have a host name from HTTP Request (see `com.gerritforge.gerrit.modules.virtualhost.VirtualHostFilter`. Which means that it won\u0027t have the protocol nor the trailing slash.\n\nWe should be safe to always do `protocol + serverName + \"/\"`.",
+      "range": {
+        "startLine": 35,
+        "startChar": 27,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a9fbcd7_f2d6a38d",
@@ -130,6 +219,24 @@
       "writtenOn": "2023-09-18T09:31:48Z",
       "side": 1,
       "message": "Nit: we could express this with a ternary (as we do  for `protocol` in the constructor already).",
+      "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b90b88_bbc84000",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VritualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-18T09:54:53Z",
+      "side": 1,
+      "message": "Please see my comment above.",
+      "parentUuid": "0a9fbcd7_f2d6a38d",
       "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
