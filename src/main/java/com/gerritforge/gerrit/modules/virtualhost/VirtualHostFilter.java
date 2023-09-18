@@ -15,6 +15,8 @@
 package com.gerritforge.gerrit.modules.virtualhost;
 
 import java.io.IOException;
+import java.util.Optional;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -23,7 +25,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import com.google.common.annotations.VisibleForTesting;
+
 public class VirtualHostFilter implements Filter {
+  static final String FORWARDED_HOST_HEADER = "X-FORWARDED-HOST";
 
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {}
@@ -31,10 +36,17 @@ public class VirtualHostFilter implements Filter {
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
       throws IOException, ServletException {
-    CurrentServerName.set(((HttpServletRequest) request).getServerName());
+    CurrentServerName.set(getServerNameFromRequest((HttpServletRequest) request));
+
     chain.doFilter(request, response);
   }
 
   @Override
   public void destroy() {}
+
+  @VisibleForTesting
+  static String getServerNameFromRequest(HttpServletRequest httpRequest) {
+    return Optional.ofNullable(httpRequest.getHeader(FORWARDED_HOST_HEADER))
+        .orElseGet(httpRequest::getServerName);
+  }
 }
