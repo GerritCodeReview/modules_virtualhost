@@ -22,6 +22,30 @@
       },
       "revId": "08368115722327c508857661a75e03a121396615",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9e0703_29615a14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-18T14:15:16Z",
+      "side": 1,
+      "message": "The problem this patch is fixing will not occur in a \"simple\" setup where Gerrit is just behind a reverse proxy. The reverse proxy will set the `HOST` header that will be then read by `HttpServletRequest.getServerName()` and everything will work fine.\n\nThe problem will occur when there are more hops between reverse-proxy and Gerrit (reverse-proxy \u003d\u003e HAProxy \u003d\u003e Gerrit). As the `HOST` header will be overridden.\n\nI\u0027ll update the commit message to be more explicit about the environment.",
+      "parentUuid": "5460e710_17723886",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "08368115722327c508857661a75e03a121396615",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
