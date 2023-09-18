@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35ba6e5_dfb72bef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-18T13:17:31Z",
+      "side": 1,
+      "message": "could environment?",
+      "revId": "bc41790daf56c72305112b54744abc76aa2348ef",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba5c776_449fd7b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-18T13:17:31Z",
+      "side": 1,
+      "message": "maybe you could add the link to the official documentation. Have a look at the github plugin stable-3.8, i added it as a part of the git commit or the documentation.",
+      "revId": "bc41790daf56c72305112b54744abc76aa2348ef",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
