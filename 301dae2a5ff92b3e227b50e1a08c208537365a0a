@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "451d3df9_3dcefc64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1063024
+      },
+      "writtenOn": "2023-09-18T09:31:48Z",
+      "side": 1,
+      "message": "Typo: `default`.",
+      "range": {
+        "startLine": 14,
+        "startChar": 30,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fdedc79_827d43d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1063024
+      },
+      "writtenOn": "2023-09-18T09:31:48Z",
+      "side": 1,
+      "message": "Typo: `virtual`.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1c913d64_beb67f82",
@@ -67,6 +113,23 @@
       "side": 1,
       "message": "good explanation, I appreciate it a lot.",
       "parentUuid": "eb8a37d5_9230e89c",
+      "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a9fbcd7_f2d6a38d",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VritualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1063024
+      },
+      "writtenOn": "2023-09-18T09:31:48Z",
+      "side": 1,
+      "message": "Nit: we could express this with a ternary (as we do  for `protocol` in the constructor already).",
       "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
