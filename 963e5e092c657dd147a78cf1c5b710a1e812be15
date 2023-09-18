@@ -16,6 +16,24 @@
       "message": "high quality software.",
       "revId": "963e5e092c657dd147a78cf1c5b710a1e812be15",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92b37b36_a2f1dbca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-18T18:20:54Z",
+      "side": 1,
+      "message": "Thank you!",
+      "parentUuid": "074572f2_0527e285",
+      "revId": "963e5e092c657dd147a78cf1c5b710a1e812be15",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
