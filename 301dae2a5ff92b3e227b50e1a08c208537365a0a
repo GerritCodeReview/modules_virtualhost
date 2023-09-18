@@ -208,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6ef37be_9ca95503",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VritualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1063024
+      },
+      "writtenOn": "2023-09-18T10:28:24Z",
+      "side": 1,
+      "message": "Yeah, that makes sense. I\u0027d be surprised to see a trailing slash in a server name.",
+      "parentUuid": "cfaaee70_a0c50b4e",
+      "range": {
+        "startLine": 35,
+        "startChar": 27,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a9fbcd7_f2d6a38d",
         "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VritualHostHttpCanonicalWebUrlProvider.java",
         "patchSetId": 4
@@ -237,6 +261,24 @@
       "side": 1,
       "message": "Please see my comment above.",
       "parentUuid": "0a9fbcd7_f2d6a38d",
+      "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "347002f7_7c9aed2a",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VritualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1063024
+      },
+      "writtenOn": "2023-09-18T10:28:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d5b90b88_bbc84000",
       "revId": "301dae2a5ff92b3e227b50e1a08c208537365a0a",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
