@@ -27,6 +27,13 @@ two extra settings to ```gerrit.config```:
   filterClass = com.gerritforge.gerrit.modules.virtualhost.VirtualHostFilter
 ```
 
+## Propagation of the `X-Forwarded-Host` Header:
+
+When Gerrit is hidden behind multiple service layers (eg. reverse-proxy and
+load balancer), it is essential to ensure the propagation from the upstream
+proxy of the header [X-Forwarded-Host](https://www.rfc-editor.org/rfc/rfc7239.html)
+from the upstream proxy.
+
 ## How to define virtual hosts
 
 /etc/virtualhost.config contains the definition of the virtual
