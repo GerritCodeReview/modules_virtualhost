@@ -16,35 +16,38 @@ package com.gerritforge.gerrit.modules.virtualhost;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import java.net.URI;
 import java.util.Optional;
-
 import org.junit.Test;
 
 public class VirtualHostHttpCanonicalWebUrlProviderTest {
   @Test
-  public void getWebProtocol() {
-    assertThat(VirtualHostHttpCanonicalWebUrlProvider.getWebProtocol("")).isEqualTo("http://");
-    assertThat(VirtualHostHttpCanonicalWebUrlProvider.getWebProtocol("https://localhost:8080/"))
-        .isEqualTo("https://");
-    assertThat(VirtualHostHttpCanonicalWebUrlProvider.getWebProtocol("http://localhost/"))
-        .isEqualTo("http://");
-  }
-
-  @Test
   public void buildFromServerName() {
+    URI baseUri = URI.create("http://failure.com/");
     String actual =
         VirtualHostHttpCanonicalWebUrlProvider.getVirtualHostHttpCanonicalWebUrl(
-            "http://", Optional.of("gerrithub.io"), () -> "failure.com");
+            baseUri, Optional.of("gerrithub.io"));
 
     assertThat(actual).isEqualTo("http://gerrithub.io/");
   }
 
   @Test
   public void fallbackToHttpCanonicalUrl() {
+    URI baseUri = URI.create("https://dom0.com/");
     String actual =
         VirtualHostHttpCanonicalWebUrlProvider.getVirtualHostHttpCanonicalWebUrl(
-            "https://", Optional.empty(), () -> "https://dom0.com/");
+            baseUri, Optional.empty());
 
     assertThat(actual).isEqualTo("https://dom0.com/");
+  }
+
+  @Test
+  public void copyPortNumberFromCanonicalUrl() {
+    URI baseUri = URI.create("http://localhost:8080/");
+    String actual =
+        VirtualHostHttpCanonicalWebUrlProvider.getVirtualHostHttpCanonicalWebUrl(
+            baseUri, Optional.of("second.localhost"));
+
+    assertThat(actual).isEqualTo("http://second.localhost:8080/");
   }
 }

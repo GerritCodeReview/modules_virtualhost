@@ -14,38 +14,33 @@
 
 package com.gerritforge.gerrit.modules.virtualhost;
 
-import java.util.Optional;
-import java.util.function.Supplier;
-
-import org.eclipse.jgit.lib.Config;
-
 import com.google.common.annotations.VisibleForTesting;
 import com.google.gerrit.httpd.HttpCanonicalWebUrlProvider;
 import com.google.gerrit.server.config.GerritServerConfig;
 import com.google.inject.Inject;
+import java.net.URI;
+import java.util.Optional;
+import org.apache.http.client.utils.URIBuilder;
+import org.eclipse.jgit.lib.Config;
 
 public class VirtualHostHttpCanonicalWebUrlProvider extends HttpCanonicalWebUrlProvider {
-  private final String protocol;
+  private final URI serverUri;
 
   @Inject
   VirtualHostHttpCanonicalWebUrlProvider(@GerritServerConfig Config config) {
     super(config);
-    protocol = getWebProtocol(super.get());
+    serverUri = URI.create(super.get());
   }
 
   @Override
   public String get() {
-    return getVirtualHostHttpCanonicalWebUrl(protocol, CurrentServerName.get(), super::get);
+    return getVirtualHostHttpCanonicalWebUrl(serverUri, CurrentServerName.get());
   }
 
   @VisibleForTesting
-  static String getWebProtocol(String canonicalWebUrl) {
-    return canonicalWebUrl.startsWith("https://") ? "https://" : "http://";
-  }
-
-  @VisibleForTesting
-  static String getVirtualHostHttpCanonicalWebUrl(
-      String protocol, Optional<String> serverName, Supplier<String> httpCanonicalUrlSupplier) {
-    return serverName.map(name -> protocol + name + "/").orElseGet(httpCanonicalUrlSupplier);
+  static String getVirtualHostHttpCanonicalWebUrl(URI baseUri, Optional<String> serverName) {
+    return serverName
+        .map(name -> new URIBuilder(baseUri).setHost(name).toString())
+        .orElse(baseUri.toString());
   }
 }
