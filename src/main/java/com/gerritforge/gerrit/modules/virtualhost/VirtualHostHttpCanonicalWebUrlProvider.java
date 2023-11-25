@@ -18,13 +18,18 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.gerrit.httpd.HttpCanonicalWebUrlProvider;
 import com.google.gerrit.server.config.GerritServerConfig;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
+import com.google.inject.Singleton;
 import java.net.URI;
 import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.http.client.utils.URIBuilder;
 import org.eclipse.jgit.lib.Config;
 
+@Singleton
 public class VirtualHostHttpCanonicalWebUrlProvider extends HttpCanonicalWebUrlProvider {
   private final URI serverUri;
+  private Provider<HttpServletRequest> requestProvider;
 
   @Inject
   VirtualHostHttpCanonicalWebUrlProvider(@GerritServerConfig Config config) {
@@ -32,9 +37,15 @@ public class VirtualHostHttpCanonicalWebUrlProvider extends HttpCanonicalWebUrlP
     serverUri = URI.create(super.get());
   }
 
+  @Inject(optional = true)
+  public void setHttpServletRequest(Provider<HttpServletRequest> hsr) {
+    super.setHttpServletRequest(hsr);
+    requestProvider = hsr;
+  }
+
   @Override
   public String get() {
-    return getVirtualHostHttpCanonicalWebUrl(serverUri, CurrentServerName.get());
+    return getVirtualHostHttpCanonicalWebUrl(serverUri, getServerName());
   }
 
   @VisibleForTesting
@@ -42,5 +53,12 @@ public class VirtualHostHttpCanonicalWebUrlProvider extends HttpCanonicalWebUrlP
     return serverName
         .map(name -> new URIBuilder(baseUri).setHost(name).toString())
         .orElse(baseUri.toString());
+  }
+
+  private Optional<String> getServerName() {
+    return CurrentServerName.get()
+        .or(
+            () ->
+                Optional.ofNullable(requestProvider).map(provider -> provider.get().getServerName()));
   }
 }
