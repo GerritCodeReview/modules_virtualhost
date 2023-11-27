@@ -22,6 +22,30 @@
       },
       "revId": "c893f89b3eedd2b8758f2d40dc833f0ea95ecb3c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7080ad4e_8d34989d",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-11-27T08:08:15Z",
+      "side": 1,
+      "message": "This is a good question. Yes, there only be a single instance of this class, but it uses \"scoped\" providers to get the server name. The `ThreadLocal` (used internally in `CurrentServerName`) will only be set in a given thread. And, `Provider\u003cHttpServletRequest\u003e` will return the request that is accessing this class.\n\nAt least that\u0027s my understanding how Guice works ;)",
+      "parentUuid": "b3345a4f_a6ddcbfe",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "c893f89b3eedd2b8758f2d40dc833f0ea95ecb3c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
