@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce2bcf0e_18cb3a02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-12-15T16:57:48Z",
+      "side": 1,
+      "message": "\u003e Do I understand correctly, that the only problem is the URL in the git output?\n\nYes, that\u0027s what we have observed now. Haven\u0027t noticed the URL being wrong in ay nay other places. Even in the downloads command the host name is correct.\n\n\n\u003e If yes, what about the following solution: instead of modifying CanonicalWebUrlProvider install a new ChangeReportFormatter (it is a DynamicItem, so it should be possible to install a custom one). The ChangeReportFormatter can take into account the project name and generate the correct virtual host name.\n\nWell, it kinda feels wrong to use `ChangeReportFormatter` only to adjust the hostname. Then we\u0027d also need a mapping from project to the virtual host name to make this work... or inject `Provider\u003cHttpServletRequest\u003e` to get the hostname form request. This feels bad.\n\n\u003e WDYT?\n\nWe just want to change the server URL and it should be possible by a single binding. IMO it would be messy and not developer-friendly if we require to bind more (possibly disconnected) things to \"just\" change the hostname in links.\n\nIs this convincing argumentation?",
+      "parentUuid": "67311424_d1cc1027",
+      "revId": "c893f89b3eedd2b8758f2d40dc833f0ea95ecb3c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3345a4f_a6ddcbfe",
         "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
         "patchSetId": 2
