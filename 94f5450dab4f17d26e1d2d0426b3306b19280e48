@@ -95,6 +95,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "271a26b3_68452aff",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-03-01T16:50:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "94ee9f7b_3b87611f",
+      "range": {
+        "startLine": 41,
+        "startChar": 14,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "94f5450dab4f17d26e1d2d0426b3306b19280e48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab2159c1_528af838",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "That \"optional injection\" doesn\u0027t really work, at least during my testing that setter was not called by Guice.\n\nAs I didn\u0027t see that injection happen, I went with the \"more performant\" option and used the thread local value. If that provider would be always called by Guice, I\u0027d definitely go with it.\n\nWDYT?",
       "parentUuid": "ab2159c1_528af838",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 102
+      },
+      "revId": "94f5450dab4f17d26e1d2d0426b3306b19280e48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cb6b97b_58d157a0",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-03-01T16:50:14Z",
+      "side": 1,
+      "message": "\u003e That \"optional injection\" doesn\u0027t really work, at least during my testing that setter was not called by Guice.\n\nWell, I used it extensively and it works for me.\n\n\u003e As I didn\u0027t see that injection happen, I went with the \"more performant\" option and used the thread local value. If that provider would be always called by Guice, I\u0027d definitely go with it.\n\nI believe it is worth to understand why the injection doesn\u0027t work first, as it should work.",
+      "parentUuid": "a783390d_3089b866",
       "range": {
         "startLine": 59,
         "startChar": 4,
