@@ -188,6 +188,30 @@
       },
       "revId": "94f5450dab4f17d26e1d2d0426b3306b19280e48",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9530a296_5dab3a1a",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2024-03-01T18:48:44Z",
+      "side": 1,
+      "message": "\u003e Well, I used it extensively and it works for me.\n\nSame here, that\u0027s why I was surprised that it didn\u0027t work. But, as it\u0027s an _optional_ injection, the class needs to be bound (or injected) in the context that provides that optional dependency, this is not the case in this situation. See the below response for an explanation of why.\n\n\u003e I believe it is worth to understand why the injection doesn\u0027t work first, as it should work.\n\nThis was discussed on the change in Gerrit core I82891b, where the `setHttpServletRequest` was called manually in `Daemon` class, which meant that the `HttpCanonicalWebUrlProvider` class instance was created on the spot, to the `Provider\u003cHttpServletRequest\u003e` and then it was dismissed (and garbage collected). That\u0027s because in Gerrit core it\u0027s not a singleton.\n\n-- \n\nGoing back, to the initial question:\n\u003e Isn\u0027t the other way around? I would trust the requestProvider first and, because it is an optional injection, fallback to thread local.\n\nThat thread local should be set from the same HTTP request, so it doesn\u0027t matter anyway. I just felt that the thread-local would be more _reliable_ and we could \"skip\" one condition execution.\n\nAnyway, it shouldn\u0027t matter what\u0027s first. I can flit that the other way around ;)",
+      "parentUuid": "9cb6b97b_58d157a0",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 102
+      },
+      "revId": "94f5450dab4f17d26e1d2d0426b3306b19280e48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
