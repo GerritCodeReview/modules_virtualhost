@@ -212,6 +212,30 @@
       },
       "revId": "94f5450dab4f17d26e1d2d0426b3306b19280e48",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1db28810_a7458f23",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-03-20T00:02:30Z",
+      "side": 1,
+      "message": "Yes, I prefer to trust Guice first, as the thread-local is basically a workaround.",
+      "parentUuid": "9530a296_5dab3a1a",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 102
+      },
+      "revId": "94f5450dab4f17d26e1d2d0426b3306b19280e48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
