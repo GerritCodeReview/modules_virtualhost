@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e52562eb_ea66987f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-03-27T00:14:07Z",
+      "side": 1,
+      "message": "@dariusz.luksza@gmail.com Can you please verify E2E as well?",
+      "revId": "f94abd64a288e5c25adee4d3e88bf79990f77c5b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
