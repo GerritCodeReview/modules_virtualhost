@@ -16,6 +16,23 @@
       "message": "@dariusz.luksza@gmail.com Can you please verify E2E as well?",
       "revId": "f94abd64a288e5c25adee4d3e88bf79990f77c5b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa06785c_76842300",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2024-03-27T09:59:06Z",
+      "side": 1,
+      "message": "Verified locally with current `master` (v3.9.2-711-g0807b419719), works as expected.",
+      "revId": "f94abd64a288e5c25adee4d3e88bf79990f77c5b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
