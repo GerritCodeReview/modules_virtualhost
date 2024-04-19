@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f851fc_ecd4ad87",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-04-19T18:09:21Z",
+      "side": 1,
+      "message": "@dariusz.luksza@gmail.com Do I have to include also other threads that received the `HttpServletSequest` in their context?",
+      "range": {
+        "startLine": 73,
+        "startChar": 41,
+        "endLine": 73,
+        "endChar": 59
+      },
+      "revId": "6ff95d83d8285d253fc06578fd06a7c4a154e888",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
