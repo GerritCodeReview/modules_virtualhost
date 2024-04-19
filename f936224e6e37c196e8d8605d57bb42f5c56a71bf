@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ff20da2_2585808d",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2024-04-19T12:26:23Z",
+      "side": 1,
+      "message": "```suggestion\n                Optional.ofNullable(requestProvider)\n                    .map(VirtualHostHttpCanonicalWebUrlProvider::extractServerNameWhenInScope));\n```\n\nthere is no need to filter out `null` as `Optional.map(foo -\u003e null)` is already an `Optional.empty` e.g.\n```\nSystem.out.println(Optional.of(\"foo\").map(f -\u003e null));\n```\nprints `Optional.empty`",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 51
+      },
+      "revId": "f936224e6e37c196e8d8605d57bb42f5c56a71bf",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
