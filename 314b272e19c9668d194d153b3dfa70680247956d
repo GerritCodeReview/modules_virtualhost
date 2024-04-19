@@ -46,6 +46,86 @@
       },
       "revId": "314b272e19c9668d194d153b3dfa70680247956d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c21e097_d6109ab5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2024-04-19T12:02:32Z",
+      "side": 1,
+      "message": "This is also probably a side effect of `VirutalHostCanonicalWebUrlProvider` being market as `Singleton`. Which means, when it\u0027s created in the HTTP scope, we get the optional `Provider\u003cHttpServletRequest\u003e` injected, and cached in the instance. Then when we\u0027re called again outside of the HTTP scope, we still have that provider in our singleton instance, but when we try to call it BOOM! it throws `OutOfScopeException`.\n\nIMO, we can go with that fix, as the injection of `HttpCanonicalWebURlProvider` is already complicated and tracing down all corner cases might be problematic.",
+      "revId": "314b272e19c9668d194d153b3dfa70680247956d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4344465f_e7ac1d1d",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2024-04-19T12:02:32Z",
+      "side": 1,
+      "message": "nit: from what I noticed, we usually have empty line between static and instance members",
+      "revId": "314b272e19c9668d194d153b3dfa70680247956d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a4c884a_329c3641",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2024-04-19T12:02:32Z",
+      "side": 1,
+      "message": "s/current thread out/current thread is out/",
+      "range": {
+        "startLine": 72,
+        "startChar": 82,
+        "endLine": 72,
+        "endChar": 101
+      },
+      "revId": "314b272e19c9668d194d153b3dfa70680247956d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "073adbf2_303d0c72",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2024-04-19T12:02:32Z",
+      "side": 1,
+      "message": "nit: just for readability purposes, IMO would be good to extract this into a private method.",
+      "range": {
+        "startLine": 67,
+        "startChar": 24,
+        "endLine": 75,
+        "endChar": 25
+      },
+      "revId": "314b272e19c9668d194d153b3dfa70680247956d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
