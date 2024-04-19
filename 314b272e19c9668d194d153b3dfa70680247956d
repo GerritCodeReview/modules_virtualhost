@@ -82,6 +82,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1272842b_04d9b184",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-04-19T12:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4344465f_e7ac1d1d",
+      "revId": "314b272e19c9668d194d153b3dfa70680247956d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a4c884a_329c3641",
@@ -95,6 +113,30 @@
       "writtenOn": "2024-04-19T12:02:32Z",
       "side": 1,
       "message": "s/current thread out/current thread is out/",
+      "range": {
+        "startLine": 72,
+        "startChar": 82,
+        "endLine": 72,
+        "endChar": 101
+      },
+      "revId": "314b272e19c9668d194d153b3dfa70680247956d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05d19ec_2daaf457",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-04-19T12:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a4c884a_329c3641",
       "range": {
         "startLine": 72,
         "startChar": 82,
