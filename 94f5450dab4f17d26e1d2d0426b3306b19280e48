@@ -260,6 +260,30 @@
       },
       "revId": "94f5450dab4f17d26e1d2d0426b3306b19280e48",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07d12a4a_0aa566e8",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/VirtualHostHttpCanonicalWebUrlProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-04-19T11:11:01Z",
+      "side": 1,
+      "message": "This actually wasn\u0027t working properly because if we don\u0027t have the request the L60 would throw an `OutOfScopeException` without any possibility to fallback to the L61.\n\nSo we should:\n1. Give priority to the thread local, because if we have it there, we just use it\n2. Use the non-null request Provider and catch the OutOfScopeException (it is normal that it could be called in different context)\n3. As last resort return an Optional.empty()",
+      "parentUuid": "46dfdb21_7a7750ca",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 102
+      },
+      "revId": "94f5450dab4f17d26e1d2d0426b3306b19280e48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
