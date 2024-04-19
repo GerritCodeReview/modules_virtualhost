@@ -19,8 +19,8 @@ import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.httpd.HttpCanonicalWebUrlProvider;
 import com.google.gerrit.server.config.GerritServerConfig;
 import com.google.inject.Inject;
-import com.google.inject.OutOfScopeException;
 import com.google.inject.Provider;
+import com.google.inject.ProvisionException;
 import com.google.inject.Singleton;
 import java.net.URI;
 import java.util.Optional;
@@ -70,12 +70,14 @@ public class VirtualHostHttpCanonicalWebUrlProvider extends HttpCanonicalWebUrlP
 
   @Nullable
   private static String extractServerNameWhenInScope(Provider<HttpServletRequest> provider) {
-    try {
-      return provider.get().getServerName();
-    } catch (OutOfScopeException e) {
-      logger.atWarning().withCause(e).log(
-          "Unable to determine the virtual-host servername: current thread is out of an HTTP request scope or outside a call stack coming from a GuiceServlet filter");
-      return null;
+    if (Thread.currentThread().getName().startsWith("HTTP")) {
+      try {
+        return provider.get().getServerName();
+      } catch (ProvisionException e) {
+        logger.atWarning().withCause(e).log(
+            "Unable to determine the virtual-host servername: current thread is out of an HTTP request scope or outside a call stack coming from a GuiceServlet filter");
+      }
     }
+    return null;
   }
 }
