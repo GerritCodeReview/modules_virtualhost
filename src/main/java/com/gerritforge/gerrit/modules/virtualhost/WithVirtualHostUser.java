@@ -14,6 +14,8 @@
 
 package com.gerritforge.gerrit.modules.virtualhost;
 
+import static com.gerritforge.gerrit.modules.virtualhost.VirtualHostConfig.ALL_PROJECTS_REGEX;
+
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.api.access.GlobalOrPluginPermission;
 import com.google.gerrit.extensions.conditions.BooleanCondition;
@@ -26,8 +28,10 @@ import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.RefPatternMatcher;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class WithVirtualHostUser extends WithUser {
   private final CurrentUser user;
@@ -52,17 +56,22 @@ public class WithVirtualHostUser extends WithUser {
 
   @Override
   public ForProject project(Project.NameKey project) {
-    if (!config.isEnabled()
-        || matches(
-            project.get(),
-            CurrentServerName.get().map(config::getProjects).orElse(config.defaultProjects))) {
+    if (!config.isEnabled() || matches(project.get(), getVisibleProjects())) {
       return wrapped.project(project);
     }
 
     return ForHiddenProject.INSTANCE;
   }
 
+  private String[] getVisibleProjects() {
+    return CurrentServerName.get().map(config::getProjects).orElse(config.defaultProjects);
+  }
+
   private boolean matches(String project, String[] projectsPatterns) {
+    if (projectsPatterns.length == 0) {
+      return true;
+    }
+
     for (String projectPattern : projectsPatterns) {
       if (RefPatternMatcher.getMatcher(projectPattern).match(project, user)) {
         return true;
@@ -86,5 +95,28 @@ public class WithVirtualHostUser extends WithUser {
   @Override
   public BooleanCondition testCond(GlobalOrPluginPermission perm) {
     return wrapped.testCond(perm);
+  }
+
+  @Override
+  public String filterQueryChanges() {
+    String[] visibleProjects = getVisibleProjects();
+    if (visibleProjects.length == 0) {
+      return null;
+    }
+
+    String[] queryChangesFilters = new String[visibleProjects.length];
+    for (int i = 0; i < visibleProjects.length; i++) {
+      String projectName = visibleProjects[i];
+
+      if (projectName.equals(ALL_PROJECTS_REGEX)) {
+        return null;
+      }
+      if (projectName.endsWith("*")) {
+        queryChangesFilters[i] = "projects:" + projectName.substring(0, projectName.length() - 1);
+      } else {
+        queryChangesFilters[i] = "project:" + projectName;
+      }
+    }
+    return Arrays.stream(queryChangesFilters).collect(Collectors.joining(" OR ", "(", ")"));
   }
 }

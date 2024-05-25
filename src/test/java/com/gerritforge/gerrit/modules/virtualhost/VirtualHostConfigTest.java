@@ -18,29 +18,10 @@ import static com.gerritforge.gerrit.modules.virtualhost.VirtualHostConfig.ALL_P
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.gerrit.testing.GerritJUnit.assertThrows;
 
-import com.google.gerrit.server.config.SitePaths;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.eclipse.jgit.storage.file.FileBasedConfig;
-import org.eclipse.jgit.util.FS;
-import org.junit.Before;
 import org.junit.Test;
 
-public class VirtualHostConfigTest {
-
-  public static final String TEST_VIRTUAL_HOST = "testhost";
-  private SitePaths testSitePaths;
-  private FileBasedConfig virtualHostFileConfig;
-
-  @Before
-  public void setup() throws IOException {
-    Path tempPath = Files.createTempDirectory("virtualhost-test-" + System.nanoTime());
-    testSitePaths = new SitePaths(tempPath);
-    virtualHostFileConfig =
-        new FileBasedConfig(
-            testSitePaths.etc_dir.resolve("virtualhost.config").toFile(), FS.DETECTED);
-  }
+public class VirtualHostConfigTest extends AbstractVirtualHostTest {
 
   @Test
   public void projectsAllowsCatchAllRegExOnDefaults() throws IOException {
@@ -70,11 +51,5 @@ public class VirtualHostConfigTest {
     assertThrows(
         IllegalStateException.class,
         () -> new VirtualHostConfig(testSitePaths).getProjects(TEST_VIRTUAL_HOST));
-  }
-
-  private void setVirtualHostConfig(String section, String subsection, String projectsValue)
-      throws IOException {
-    virtualHostFileConfig.setString(section, subsection, "projects", projectsValue);
-    virtualHostFileConfig.save();
   }
 }
