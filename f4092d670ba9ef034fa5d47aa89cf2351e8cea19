@@ -93,6 +93,30 @@
       },
       "revId": "f4092d670ba9ef034fa5d47aa89cf2351e8cea19",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55b2e96_6b565c24",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/WithVirtualHostUser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-07-04T08:08:34Z",
+      "side": 1,
+      "message": "I see, we are using the RefPatternMatcher which may include a general regex.\n\n```\n  public static RefPatternMatcher getMatcher(String pattern) {\n    if (containsParameters(pattern)) {\n      return new ExpandParameters(pattern);\n    } else if (isRE(pattern)) {\n      return new Regexp(pattern);\n    } else if (pattern.endsWith(\"/*\")) {\n      return new Prefix(pattern.substring(0, pattern.length() - 1));\n    } else {\n      return new Exact(pattern);\n    }\n  }\n```\n\nI would have to exclude that because of two reasons:\n- Cost: making a regex check for every permission check is an unbearable burden. Also Gerrit regex-based ACLs is struggling\n- Memory consumption: the indexing backend would not be able to bear the load of a post-processing with regex matching\n\nWe do not say *explicitly* anywhere in the documentation that it is supported, therefore it is an _accidental_ feature we have to block. Will address as a separate change.",
+      "parentUuid": "f10c94aa_06c85505",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 96
+      },
+      "revId": "f4092d670ba9ef034fa5d47aa89cf2351e8cea19",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
