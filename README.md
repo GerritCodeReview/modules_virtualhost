@@ -63,3 +63,9 @@ Example to include all the projects by default:
 [default]
   projects = ^.*
 ```
+
+> **NOTE**: The `^.*` is the only regular expression supported by the virtualhost
+> module because of the potential performance implication of a generic regular expression
+> evaluation during the ACLs. Bear in mind that any possible action perform in Gerrit will
+> go through the virtualhost module filtering and therefore it is paramount to minimize the
+> potential performance impact.

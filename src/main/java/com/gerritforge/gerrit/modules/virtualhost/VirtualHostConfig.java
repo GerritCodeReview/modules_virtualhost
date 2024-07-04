@@ -15,6 +15,7 @@
 package com.gerritforge.gerrit.modules.virtualhost;
 
 import com.google.gerrit.server.config.SitePaths;
+import com.google.gerrit.server.project.RefPattern;
 import com.google.inject.Inject;
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +32,7 @@ public class VirtualHostConfig {
   private final Config config;
   private final boolean enabled;
 
+  public static final String ALL_PROJECTS_REGEX = "^.*";
   public final String[] defaultProjects;
 
   @Inject
@@ -46,7 +48,7 @@ public class VirtualHostConfig {
       defaultProjects = new String[0];
       return;
     }
-    defaultProjects = config.getStringList("default", null, "projects");
+    defaultProjects = validateProjects(config.getStringList("default", null, "projects"));
     enabled = !config.getSubsections("server").isEmpty() || defaultProjects.length > 0;
   }
 
@@ -55,12 +57,22 @@ public class VirtualHostConfig {
       return EMPTY_PROJECTS_ARRAY;
     }
 
-    String[] projects = config.getStringList("server", hostname, "projects");
+    String[] projects = validateProjects(config.getStringList("server", hostname, "projects"));
     if (projects.length > 0) {
       return projects;
     }
 
     return defaultProjects;
+  }
+
+  private String[] validateProjects(String[] projects) {
+    for (String project : projects) {
+      if (RefPattern.isRE(project) && !project.equals(ALL_PROJECTS_REGEX)) {
+        throw new IllegalStateException(
+            "Project regex '" + project + "' is not allowed in virtualhost.config");
+      }
+    }
+    return projects;
   }
 
   public boolean isEnabled() {
