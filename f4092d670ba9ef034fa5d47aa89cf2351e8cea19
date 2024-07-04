@@ -141,6 +141,30 @@
       },
       "revId": "f4092d670ba9ef034fa5d47aa89cf2351e8cea19",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f1937d_1bce30f3",
+        "filename": "src/main/java/com/gerritforge/gerrit/modules/virtualhost/WithVirtualHostUser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-07-04T09:02:48Z",
+      "side": 1,
+      "message": "Addressed with I61d51430.",
+      "parentUuid": "defc19a7_79f8d4f1",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 96
+      },
+      "revId": "f4092d670ba9ef034fa5d47aa89cf2351e8cea19",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
