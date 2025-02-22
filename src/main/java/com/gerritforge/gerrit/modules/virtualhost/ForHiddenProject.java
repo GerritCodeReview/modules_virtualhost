@@ -25,7 +25,7 @@ import com.google.gerrit.server.permissions.PermissionBackend.ForProject;
 import com.google.gerrit.server.permissions.PermissionBackend.ForRef;
 import com.google.gerrit.server.permissions.PermissionBackend.RefFilterOptions;
 import com.google.gerrit.server.permissions.PermissionBackendException;
-import com.google.gerrit.server.permissions.RefPermission;
+import com.google.gerrit.server.permissions.RefPermissionOrLabel;
 import com.google.gerrit.server.query.change.ChangeData;
 import java.util.Collection;
 import java.util.Collections;
@@ -56,12 +56,12 @@ public class ForHiddenProject extends ForProject {
     }
 
     @Override
-    public void check(RefPermission perm) throws AuthException, PermissionBackendException {
+    public void check(RefPermissionOrLabel perm) throws AuthException, PermissionBackendException {
       throwDenied();
     }
 
     @Override
-    public Set<RefPermission> test(Collection<RefPermission> permSet)
+    public <T extends RefPermissionOrLabel> Set<T> test(Collection<T> permSet)
         throws PermissionBackendException {
       return Collections.emptySet();
     }
@@ -72,7 +72,7 @@ public class ForHiddenProject extends ForProject {
     }
 
     @Override
-    public BooleanCondition testCond(RefPermission perm) {
+    public BooleanCondition testCond(RefPermissionOrLabel perm) {
       return BooleanCondition.FALSE;
     }
   }
