@@ -17,6 +17,7 @@ package com.gerritforge.gerrit.modules.virtualhost;
 import com.google.gerrit.server.config.SitePaths;
 import com.google.gerrit.server.project.RefPattern;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
 import org.eclipse.jgit.errors.ConfigInvalidException;
@@ -26,6 +27,7 @@ import org.eclipse.jgit.util.FS;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Singleton
 public class VirtualHostConfig {
   private static final Logger log = LoggerFactory.getLogger(VirtualHostConfig.class);
   private static final String[] EMPTY_PROJECTS_ARRAY = new String[0];
