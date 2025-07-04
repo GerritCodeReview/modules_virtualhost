@@ -16,6 +16,23 @@
       "message": "Verified locally that it builds and tests successfully against the current `stable-3.11`.",
       "revId": "9edceca576a7c1637c08caea0a1eff66d7119feb",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c81ea2d6_d657a526",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2025-07-04T08:09:32Z",
+      "side": 1,
+      "message": "Best to just adjust the pointer of stable-3.11 to the right SHA1",
+      "revId": "9edceca576a7c1637c08caea0a1eff66d7119feb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
