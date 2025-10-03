@@ -1,4 +1,11 @@
-# Gerrit VirtualHost
+# DEPRECATION NOTICE
+
+GerritForge has decided to [change the license to BSL](https://gitenterprise.me/2025/09/30/re-licensing-gerritforge-plugins-welcome-to-gerrit-enterprise/)
+therefore the Apache 2.0 version of this plugin is deprecated.
+The recommended version of the virtualhost plugin is on [GitHub](https://github.com/GerritForge/virtualhost)
+and the development continues on [GerritHub.io](https://review.gerrithub.io/admin/repos/GerritForge/virtualhost,general).
+
+# Gerrit VirtualHost (DEPRECATED)
 
 Gerrit lib module to split the projects' space into virtual hosts
 similarly of what you would do with an HTTP Server and different
